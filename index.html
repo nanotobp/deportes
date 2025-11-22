@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>Deportes Paraguay Live</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <style>
     :root {
       --bg: #ffffff;
@@ -18,50 +17,44 @@
       --danger: #ff3b30;
       --success: #34c759;
       --card-radius: 18px;
-      --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
+      --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
       --max-width: 1120px;
       --transition-fast: 0.18s ease-out;
     }
-    /* modo oscuro */
     .dark-theme {
       --bg: #050509;
       --bg-soft: #111118;
-      --card-bg: #15151f;
+      --card-bg: #14141f;
       --border-subtle: #272736;
       --text-main: #f5f5f7;
       --text-muted: #a1a1b2;
       --accent: #0a84ff;
       --accent-soft: #10253d;
-      --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.7);
+      --shadow-soft: 0 10px 30px rgba(0,0,0,0.75);
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "SF Pro Display", "Segoe UI", sans-serif;
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Segoe UI",sans-serif;
       background: radial-gradient(circle at top, #f5f5f7 0, var(--bg) 42%);
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
     }
-
     .app-shell {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
-
     header {
       position: sticky;
       top: 0;
-      z-index: 20;
-      background: rgba(255, 255, 255, 0.9);
+      z-index: 30;
+      background: rgba(255,255,255,0.9);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-subtle);
     }
     .dark-theme header {
-      background: rgba(10, 10, 15, 0.92);
+      background: rgba(8,8,13,0.95);
     }
-
     .header-inner {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -69,58 +62,59 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
     }
-
     .brand {
       display: flex;
       align-items: center;
       gap: 10px;
+      min-width: 0;
     }
-
     .brand-icon {
-      width: 26px;
-      height: 26px;
-      border-radius: 9px;
-      background: linear-gradient(135deg, #ff3b30, #ff9500);
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      background: linear-gradient(135deg,#ff3b30,#ff9500);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
       font-weight: 700;
       font-size: 14px;
+      flex-shrink: 0;
     }
-
     .brand-text {
       display: flex;
       flex-direction: column;
-      gap: 1px;
+      gap: 2px;
+      min-width: 0;
     }
-
     .brand-title {
       font-size: 16px;
       font-weight: 700;
       letter-spacing: -0.02em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-
     .brand-sub {
       font-size: 11px;
       color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-
     .header-right {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
-
     nav {
       display: flex;
       gap: 6px;
       align-items: center;
       flex-wrap: wrap;
     }
-
     .nav-pill {
       font-size: 12px;
       padding: 6px 11px;
@@ -129,30 +123,23 @@
       background: transparent;
       color: var(--text-muted);
       cursor: pointer;
-      transition: background var(--transition-fast),
-        color var(--transition-fast),
-        border-color var(--transition-fast),
-        transform var(--transition-fast);
+      transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
       white-space: nowrap;
     }
-
     .nav-pill.active {
       background: var(--bg-soft);
       border-color: var(--border-subtle);
       color: var(--text-main);
       font-weight: 600;
     }
-
     .nav-pill:hover {
       border-color: var(--border-subtle);
       background: #f0f0f3;
       transform: translateY(-1px);
     }
-
     .dark-theme .nav-pill:hover {
-      background: #1c1c28;
+      background: #1a1a26;
     }
-
     .theme-toggle {
       border-radius: 999px;
       border: 1px solid var(--border-subtle);
@@ -164,34 +151,22 @@
       align-items: center;
       gap: 4px;
       color: var(--text-main);
-      transition: background var(--transition-fast),
-        border-color var(--transition-fast),
-        transform var(--transition-fast);
+      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+      flex-shrink: 0;
     }
     .theme-toggle:hover {
       background: var(--card-bg);
       transform: translateY(-1px);
     }
-
     main {
       flex: 1;
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 16px 16px 28px;
+      width: 100%;
     }
-
-    .view {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .section {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
+    .view { display: flex; flex-direction: column; gap: 18px; }
+    .section { display: flex; flex-direction: column; gap: 10px; }
     .section-header {
       display: flex;
       align-items: baseline;
@@ -199,56 +174,51 @@
       gap: 8px;
       flex-wrap: wrap;
     }
-
     .section-title {
       font-size: 18px;
       font-weight: 700;
       letter-spacing: -0.02em;
     }
-
     .section-subtitle {
       font-size: 12px;
       color: var(--text-muted);
     }
-
     .section-link {
       font-size: 12px;
       color: var(--accent);
-      text-decoration: none;
+      border: none;
+      background: none;
       cursor: pointer;
     }
     .section-link:hover { text-decoration: underline; }
-
     .hero-card {
       border-radius: 24px;
       background: var(--card-bg);
       box-shadow: var(--shadow-soft);
       display: grid;
-      grid-template-columns: 1.3fr 1fr;
+      grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
       overflow: hidden;
-      min-height: 220px;
+      min-height: 210px;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 800px) {
       .hero-card { grid-template-columns: 1fr; }
     }
-
     .hero-image {
-      background: radial-gradient(circle at top, #ff9f0a, #ff375f);
+      background: radial-gradient(circle at top,#ff9f0a,#ff375f);
       position: relative;
+      min-height: 180px;
     }
     .dark-theme .hero-image {
-      background: radial-gradient(circle at top, #ff9f0a, #8e24aa);
+      background: radial-gradient(circle at top,#ff9f0a,#8e24aa);
     }
-
     .hero-image::after {
       content: "";
       position: absolute;
       inset: 18px;
       border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.24);
+      border: 1px solid rgba(255,255,255,0.25);
       opacity: 0.7;
     }
-
     .hero-label {
       position: absolute;
       top: 16px;
@@ -256,11 +226,13 @@
       padding: 4px 10px;
       font-size: 11px;
       border-radius: 999px;
-      background: rgba(0, 0, 0, 0.38);
+      background: rgba(0,0,0,0.38);
       color: #fff;
       backdrop-filter: blur(10px);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
-
     .hero-score {
       position: absolute;
       left: 20px;
@@ -271,43 +243,30 @@
       align-items: center;
       color: #fff;
     }
-
     .hero-team {
       display: flex;
       flex-direction: column;
       gap: 4px;
     }
-
-    .hero-team-name {
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .hero-team-meta {
-      font-size: 12px;
-      opacity: 0.85;
-    }
-
+    .hero-team-name { font-size: 18px; font-weight: 700; }
+    .hero-team-meta { font-size: 12px; opacity: 0.85; }
     .hero-score-number {
-      font-size: 36px;
+      font-size: 34px;
       font-weight: 800;
       letter-spacing: -0.04em;
     }
-
     .hero-body {
-      padding: 16px 16px 18px;
+      padding: 18px 16px 18px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
-
     .hero-chip-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       font-size: 11px;
     }
-
     .chip {
       border-radius: 999px;
       padding: 3px 9px;
@@ -315,45 +274,22 @@
       color: var(--text-muted);
       border: 1px solid rgba(0,0,0,0.03);
     }
-
     .hero-title {
       font-size: 20px;
       font-weight: 700;
       letter-spacing: -0.02em;
     }
-
     .hero-meta {
       font-size: 12px;
       color: var(--text-muted);
     }
-
     .hero-cta-row {
-      margin-top: 8px;
+      margin-top: 4px;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
-
-    .btn-primary {
-      padding: 7px 14px;
-      border-radius: 999px;
-      border: none;
-      background: var(--accent);
-      color: #fff;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background var(--transition-fast),
-        transform var(--transition-fast),
-        box-shadow var(--transition-fast);
-    }
-    .btn-primary:hover {
-      background: #0059b8;
-      box-shadow: 0 6px 16px rgba(0, 113, 227, 0.35);
-      transform: translateY(-1px);
-    }
-
-    .btn-soft {
+    .btn-primary, .btn-soft, .filter-pill {
       padding: 7px 14px;
       border-radius: 999px;
       border: 1px solid var(--border-subtle);
@@ -361,22 +297,46 @@
       color: var(--text-main);
       font-size: 13px;
       cursor: pointer;
-      transition: background var(--transition-fast),
-        border-color var(--transition-fast),
-        transform var(--transition-fast);
+      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast);
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: transparent;
+    }
+    .btn-primary:hover {
+      background: #0059b8;
+      box-shadow: 0 6px 16px rgba(0,113,227,0.35);
+      transform: translateY(-1px);
     }
     .btn-soft:hover {
       background: var(--bg-soft);
       transform: translateY(-1px);
     }
-
-    .matches-list, .results-list, .news-grid, .teams-grid {
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .filter-pill {
+      font-size: 12px;
+      padding-inline: 11px;
+      background: var(--bg-soft);
+      color: var(--text-muted);
+    }
+    .filter-pill.active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .matches-list, .news-grid, .teams-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
       gap: 10px;
     }
-
-    .match-card, .result-card, .news-card, .team-card {
+    .match-card, .news-card, .team-card {
       border-radius: var(--card-radius);
       border: 1px solid var(--border-subtle);
       background: var(--card-bg);
@@ -384,55 +344,38 @@
       display: flex;
       flex-direction: column;
       gap: 6px;
-      transition: box-shadow var(--transition-fast),
-        transform var(--transition-fast),
-        border-color var(--transition-fast),
-        background var(--transition-fast);
+      transition: box-shadow var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
     }
-
-    .news-card, .team-card {
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .match-card:hover, .result-card:hover,
-    .news-card:hover, .team-card:hover {
+    .news-card, .team-card { padding: 0; overflow: hidden; }
+    .match-card:hover, .news-card:hover, .team-card:hover {
       box-shadow: var(--shadow-soft);
       transform: translateY(-2px);
       border-color: rgba(0,0,0,0.08);
     }
-
-    .match-league, .match-footer, .result-top {
+    .match-league {
       font-size: 11px;
       color: var(--text-muted);
       display: flex;
       justify-content: space-between;
       gap: 4px;
     }
-
     .match-main-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
     }
-
     .match-team-col {
       display: flex;
       flex-direction: column;
       gap: 3px;
       font-size: 13px;
     }
-
-    .match-team-name {
-      font-weight: 600;
-    }
-
+    .match-team-name { font-weight: 600; }
     .match-team-meta {
       font-size: 11px;
       color: var(--text-muted);
     }
-
     .team-badge {
       width: 22px;
       height: 22px;
@@ -441,31 +384,19 @@
       background: #fff;
       border: 1px solid rgba(0,0,0,0.04);
     }
-
-    .match-score {
-      min-width: 74px;
-      text-align: center;
-    }
-
+    .match-score { min-width: 74px; text-align: center; }
     .match-score-line {
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 700;
       letter-spacing: -0.03em;
     }
-
     .match-status {
       font-size: 11px;
       font-weight: 600;
       color: var(--success);
     }
-    .match-status.pending {
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-    .match-status.finished {
-      color: var(--text-muted);
-    }
-
+    .match-status.pending { color: var(--text-muted); font-weight: 500; }
+    .match-status.finished { color: var(--text-muted); }
     .live-pill {
       font-size: 10px;
       color: #fff;
@@ -476,23 +407,6 @@
       letter-spacing: 0.06em;
       margin-left: 4px;
     }
-
-    .results-list .result-card {
-      padding: 8px 10px;
-      gap: 4px;
-    }
-
-    .result-teams {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      font-weight: 600;
-    }
-    .result-score {
-      font-size: 16px;
-      font-weight: 700;
-    }
-
     .standings-strip {
       display: flex;
       gap: 8px;
@@ -506,64 +420,33 @@
       background: var(--border-subtle);
       border-radius: 999px;
     }
-
     .team-chip {
-      min-width: 90px;
+      min-width: 100px;
       padding: 8px 10px;
       border-radius: 14px;
       background: var(--bg-soft);
-      border: 1px solid rgba(0,0,0,0.04);
+      border: 1px solid rgba(0,0,0,0.03);
       display: flex;
       flex-direction: column;
       gap: 2px;
       font-size: 11px;
     }
-
     .team-chip-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 4px;
     }
-
-    .team-chip-pos {
-      font-weight: 700;
-      font-size: 11px;
-    }
-
-    .team-chip-name {
-      font-weight: 600;
-      font-size: 11px;
-    }
-
-    .team-chip-points {
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .team-chip-form {
-      display: flex;
-      gap: 2px;
-      margin-top: 2px;
-    }
-    .form-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #d2d2d7;
-    }
-    .form-dot.win { background: #34c759; }
-    .form-dot.draw { background: #ffcc00; }
-    .form-dot.loss { background: #ff3b30; }
-
+    .team-chip-pos { font-weight: 700; font-size: 11px; }
+    .team-chip-name { font-weight: 600; font-size: 11px; }
+    .team-chip-points { font-size: 13px; font-weight: 700; }
     .news-thumb {
       height: 110px;
-      background: linear-gradient(135deg, #0a84ff, #30d158);
+      background: linear-gradient(135deg,#0a84ff,#30d158);
     }
     .dark-theme .news-thumb {
-      background: linear-gradient(135deg, #0a84ff, #8e24aa);
+      background: linear-gradient(135deg,#0a84ff,#8e24aa);
     }
-
     .news-body {
       padding: 10px 12px 12px;
       display: flex;
@@ -586,7 +469,6 @@
       font-size: 11px;
       color: var(--text-muted);
     }
-
     .team-card-header {
       display: flex;
       align-items: center;
@@ -601,11 +483,7 @@
       flex-direction: column;
       gap: 4px;
     }
-    .team-name {
-      font-size: 14px;
-      font-weight: 700;
-    }
-
+    .team-name { font-size: 14px; font-weight: 700; }
     .badge-lg {
       width: 46px;
       height: 46px;
@@ -613,17 +491,8 @@
       object-fit: contain;
       background: #fff;
       border: 1px solid rgba(0,0,0,0.04);
+      flex-shrink: 0;
     }
-
-    .team-detail {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
-      gap: 16px;
-    }
-    @media (max-width: 860px) {
-      .team-detail { grid-template-columns: 1fr; }
-    }
-
     .team-detail-card {
       border-radius: 20px;
       background: var(--card-bg);
@@ -633,7 +502,14 @@
       flex-direction: column;
       gap: 10px;
     }
-
+    .team-detail-layout {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.6fr);
+      gap: 16px;
+    }
+    @media (max-width: 860px) {
+      .team-detail-layout { grid-template-columns: 1fr; }
+    }
     table {
       width: 100%;
       border-collapse: collapse;
@@ -656,31 +532,17 @@
     .dark-theme tr:nth-child(even) td {
       background: #101018;
     }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-size: 10px;
-      border: 1px solid var(--border-subtle);
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
-
     .hint {
       font-size: 11px;
       color: var(--text-muted);
     }
-
     footer {
       border-top: 1px solid var(--border-subtle);
       font-size: 11px;
       color: var(--text-muted);
       padding: 12px 16px 18px;
+      margin-top: 12px;
     }
-
     .footer-inner {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -689,241 +551,249 @@
       gap: 8px;
       flex-wrap: wrap;
     }
+    .loader-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at top,rgba(245,245,247,0.96),rgba(255,255,255,0.96));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 999;
+      transition: opacity 0.25s ease-out, visibility 0.25s ease-out;
+    }
+    .loader-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .loader-spinner {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 3px solid #d2d2d7;
+      border-top-color: var(--accent);
+      animation: spin 0.7s linear infinite;
+    }
+    .loader-text {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @media (max-width: 640px) {
+      .header-inner {
+        padding-inline: 10px;
+      }
+      main {
+        padding-inline: 10px;
+      }
+      .section-title {
+        font-size: 16px;
+      }
+      .hero-title {
+        font-size: 18px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="app-shell">
+    <div class="loader-overlay" id="loader">
+      <div class="loader-spinner"></div>
+      <div class="loader-text">Cargando fútbol paraguayo…</div>
+    </div>
+
     <header>
       <div class="header-inner">
         <div class="brand">
           <div class="brand-icon">PY</div>
           <div class="brand-text">
             <div class="brand-title">Deportes Paraguay</div>
-            <div class="brand-sub">Fútbol paraguayo, sin ruido.</div>
+            <div class="brand-sub">Primera, Intermedia, Copa y Albirroja.</div>
           </div>
         </div>
         <div class="header-right">
           <nav>
             <button class="nav-pill active" data-route="home">Inicio</button>
             <button class="nav-pill" data-route="partidos">Partidos</button>
-            <button class="nav-pill" data-route="tabla">Tabla</button>
+            <button class="nav-pill" data-route="tabla">Tablas</button>
             <button class="nav-pill" data-route="equipos">Equipos</button>
+            <button class="nav-pill" data-route="noticias">Noticias</button>
           </nav>
           <button class="theme-toggle" id="themeToggle">
             <span id="themeIcon">☾</span>
-            <span class="theme-label">Oscuro</span>
           </button>
         </div>
       </div>
     </header>
 
     <main>
-      <div id="app" class="view">
-        <!-- acá el JS inyecta las vistas -->
-      </div>
+      <div id="app" class="view"></div>
     </main>
 
     <footer>
       <div class="footer-inner">
-        <span>© 2025 Deportes Paraguay · Demo · Datos TheSportsDB + Noticias externas</span>
-        <span>Hecho en Paraguay, conectado a APIs ⚽</span>
+        <span>© 2025 Deportes Paraguay · Datos en vivo de TheSportsDB + Noticias externas</span>
+        <span>Hecho en Paraguay, pensado para móviles ⚽📱</span>
       </div>
     </footer>
   </div>
 
   <script>
-    // ================= CONFIG =====================
-    const LEAGUE_ID = 4347;            // Primera División PY
-    const SEASON   = "2024-2025";      // actualizar según torneo
+    // ========= CONFIG =========
+    const WORKER_BASE = "https://broad-feather-e731.nanotobp.workers.dev/?url=";
+    const TSDB_BASE = WORKER_BASE + "https://www.thesportsdb.com/api/v1/json/3/";
+    const LEAGUES = {
+      primera: 4687,     // Paraguayan Primera Division
+      intermedia: 4900,  // División Intermedia
+      copa: 5499         // Copa Paraguay
+    };
+    const SEASONS = {
+      primera: "2024",
+      intermedia: "2024",
+      copa: "2025"
+    };
 
-    // Noticias: NewsData.io o similar
-    // REGISTRATE y poné tu API KEY acá:
-    const NEWS_API_KEY = "pub_3510dae7e9334a688118abec770a8aa4"; // p.ej. de newsdata.io
+    // Noticias (debes poner tu API key si querés datos reales)
+    const NEWS_API_KEY = "PON_ACA_TU_API_KEY"; // p.ej. NewsData.io
     const NEWS_URL = NEWS_API_KEY
-      ? `https://newsdata.io/api/1/news?apikey=${pub_3510dae7e9334a688118abec770a8aa4}&country=py&language=es&category=sports`
+      ? WORKER_BASE + `https://newsdata.io/api/1/news?apikey=${NEWS_API_KEY}&country=py&language=es&category=sports`
       : null;
 
-    // Estado global simple
     const state = {
-      nextMatches: [],
-      pastMatches: [],
-      table: [],
-      teams: [],
-      teamById: {},
-      teamBadgeById: {},
+      leagues: {
+        primera: { next: [], past: [], table: [], teams: [] },
+        intermedia: { next: [], past: [], table: [], teams: [] },
+        copa: { next: [], past: [], table: [], teams: [] }
+      },
+      sele: { teamId: null, next: [], past: [] },
       news: [],
-      lastUpdated: null
+      lastUpdated: null,
+      loading: false,
+      lastError: null,
+      activeLeagueMatches: "primera",
+      activeLeagueTable: "primera"
     };
 
     const appEl = document.getElementById("app");
+    const loaderEl = document.getElementById("loader");
 
-    // ================ UTILS ===================
-
+    // ========= UTILS =========
     function createEl(html) {
       const t = document.createElement("template");
       t.innerHTML = html.trim();
       return t.content.firstChild;
     }
-
     function formatHour(timeStr) {
       if (!timeStr) return "";
       return timeStr.slice(0,5);
     }
-
     function todayISO() {
       const d = new Date();
       return d.toISOString().slice(0,10);
     }
-
     function isToday(dateStr) {
       return dateStr === todayISO();
     }
-
     function liveStatus(match) {
-      // pseudo "live": si tiene score y es hoy, lo consideramos en juego / recién terminado
       if (match.intHomeScore != null && isToday(match.dateEventLocal || match.dateEvent)) {
         return "live";
       }
       if (match.intHomeScore != null) return "finished";
       return "upcoming";
     }
-
-    // =============== API CALLS ==================
-
     async function fetchJSON(url) {
       const res = await fetch(url);
-      if (!res.ok) throw new Error("Error HTTP " + res.status);
+      if (!res.ok) throw new Error("HTTP " + res.status);
       return res.json();
     }
 
-    async function loadData() {
+    function setLoading(on) {
+      state.loading = on;
+      if (on) loaderEl.classList.remove("hidden");
+      else loaderEl.classList.add("hidden");
+    }
+
+    // ========= DATA LOADERS =========
+    async function loadLeague(key) {
+      const id = LEAGUES[key];
+      const season = SEASONS[key];
       const [next, past, table, teams] = await Promise.all([
-        fetchJSON(`https://api.allorigins.win/raw?url=https://www.thesportsdb.com/api/v1/json/3/eventsnextleague.php?id=${LEAGUE_ID}`),
-        fetchJSON(`https://api.allorigins.win/raw?url=https://www.thesportsdb.com/api/v1/json/3/eventspastleague.php?id=${LEAGUE_ID}`),
-        fetchJSON(`https://api.allorigins.win/raw?url=https://www.thesportsdb.com/api/v1/json/3/lookuptable.php?l=${LEAGUE_ID}&s=${SEASON}`),
-        fetchJSON(`https://api.allorigins.win/raw?url=https://www.thesportsdb.com/api/v1/json/3/lookup_all_teams.php?id=${LEAGUE_ID}`)
+        fetchJSON(`${TSDB_BASE}eventsnextleague.php?id=${id}`),
+        fetchJSON(`${TSDB_BASE}eventspastleague.php?id=${id}`),
+        fetchJSON(`${TSDB_BASE}lookuptable.php?l=${id}&s=${season}`),
+        fetchJSON(`${TSDB_BASE}lookup_all_teams.php?id=${id}`)
       ]);
+      state.leagues[key].next = next.events || [];
+      state.leagues[key].past = past.events || [];
+      state.leagues[key].table = table.table || [];
+      state.leagues[key].teams = teams.teams || [];
+    }
 
-      state.nextMatches = next.events || [];
-      state.pastMatches = past.events || [];
-      state.table = table.table || [];
-      state.teams = teams.teams || [];
-      state.teamById = {};
-      state.teamBadgeById = {};
-      state.teams.forEach(t => {
-        state.teamById[t.idTeam] = t;
-        state.teamBadgeById[t.idTeam] = t.strTeamBadge;
-      });
-
-      state.lastUpdated = new Date();
-
-      if (NEWS_URL && !state.news.length) {
-        try {
-          const newsRes = await fetchJSON(NEWS_URL);
-          state.news = newsRes.results || newsRes.articles || [];
-        } catch (e) {
-          console.warn("Error cargando noticias:", e);
-        }
+    async function loadSele() {
+      try {
+        const search = await fetchJSON(`${TSDB_BASE}searchteams.php?t=Paraguay`);
+        const team = search.teams && search.teams[0];
+        if (!team) return;
+        state.sele.teamId = team.idTeam;
+        const [next, past] = await Promise.all([
+          fetchJSON(`${TSDB_BASE}eventsnext.php?id=${team.idTeam}`),
+          fetchJSON(`${TSDB_BASE}eventslast.php?id=${team.idTeam}`)
+        ]);
+        state.sele.next = next.events || [];
+        state.sele.past = past.results || [];
+      } catch (e) {
+        console.warn("Error cargando selección:", e);
       }
-
-      console.log("Datos cargados", state);
     }
 
-    // =============== RENDER HELPERS ===============
-
-    function renderHero() {
-      const all = [...state.nextMatches, ...state.pastMatches];
-      if (!all.length) return "";
-
-      // Priorizar en vivo, luego próximos, luego último jugado
-      let heroMatch =
-        all.find(m => liveStatus(m) === "live") ||
-        state.nextMatches[0] ||
-        state.pastMatches[0];
-
-      const status = liveStatus(heroMatch);
-      let label = "";
-      if (status === "live") label = "En vivo";
-      else if (status === "finished") label = "Final";
-      else label = formatHour(heroMatch.strTimeLocal || heroMatch.strTime);
-
-      const hTeam = heroMatch.strHomeTeam;
-      const aTeam = heroMatch.strAwayTeam;
-      const league = heroMatch.strLeague || "Liga Paraguaya";
-
-      const title = status === "live"
-        ? `${hTeam} vs ${aTeam}: se juega ahora mismo`
-        : `${hTeam} vs ${aTeam}: próximo partido destacado`;
-
-      const meta = [
-        league,
-        heroMatch.dateEventLocal || heroMatch.dateEvent || "",
-        heroMatch.strVenue || ""
-      ].filter(Boolean).join(" · ");
-
-      const scoreStr = heroMatch.intHomeScore != null
-        ? `${heroMatch.intHomeScore} – ${heroMatch.intAwayScore}`
-        : "– : –";
-
-      return `
-        <section class="section">
-          <div class="section-header">
-            <div>
-              <div class="section-title">Partido destacado</div>
-              <div class="section-subtitle">${league}</div>
-            </div>
-            <button class="section-link" data-route="partidos">Ver calendario</button>
-          </div>
-
-          <article class="hero-card" data-match-id="${heroMatch.idEvent || ""}">
-            <div class="hero-image">
-              <div class="hero-label">
-                ${label}
-                ${status === "live" ? '<span class="live-pill">LIVE</span>' : ""}
-              </div>
-              <div class="hero-score">
-                <div class="hero-team">
-                  <div class="hero-team-name">${hTeam}</div>
-                  <div class="hero-team-meta">Local</div>
-                </div>
-                <div class="hero-score-number">${scoreStr}</div>
-                <div class="hero-team" style="text-align:right">
-                  <div class="hero-team-name">${aTeam}</div>
-                  <div class="hero-team-meta">Visitante</div>
-                </div>
-              </div>
-            </div>
-            <div class="hero-body">
-              <div class="hero-chip-row">
-                <span class="chip">${league}</span>
-                <span class="chip">${status === "live" ? "Actualizado en tiempo real" : "Próximo partido"}</span>
-                <span class="chip">${heroMatch.strVenue || "Estadio por confirmar"}</span>
-              </div>
-              <h1 class="hero-title">${title}</h1>
-              <p class="hero-meta">
-                ${meta}
-              </p>
-              <div class="hero-cta-row">
-                <button class="btn-primary" data-route="partidos">
-                  Ver todos los partidos de hoy
-                </button>
-                <button class="btn-soft" data-route="tabla">
-                  Ver tabla de posiciones
-                </button>
-              </div>
-            </div>
-          </article>
-        </section>
-      `;
+    async function loadNews() {
+      if (!NEWS_URL) return;
+      try {
+        const res = await fetchJSON(NEWS_URL);
+        state.news = res.results || res.articles || [];
+      } catch (e) {
+        console.warn("Error noticias:", e);
+      }
     }
 
-    function renderMatchCard(m) {
+    async function loadAllData() {
+      try {
+        setLoading(true);
+        await Promise.all([
+          loadLeague("primera"),
+          loadLeague("intermedia"),
+          loadLeague("copa"),
+          loadSele(),
+          loadNews()
+        ]);
+        state.lastUpdated = new Date();
+        state.lastError = null;
+      } catch (e) {
+        console.error("Error global:", e);
+        state.lastError = e.message;
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    // ========= RENDER HELPERS =========
+    function leagueName(key) {
+      if (key === "primera") return "Primera División";
+      if (key === "intermedia") return "División Intermedia";
+      if (key === "copa") return "Copa Paraguay";
+      return key;
+    }
+
+    function renderMatchCard(m, leagueKey) {
       const status = liveStatus(m);
       let statusLabel = "";
       let statusClass = "";
       if (status === "live") {
         statusLabel = "En vivo";
-        statusClass = "";
       } else if (status === "finished") {
         statusLabel = "Finalizado";
         statusClass = "finished";
@@ -931,18 +801,19 @@
         statusLabel = "Próximo";
         statusClass = "pending";
       }
-
-      const homeBadge = state.teamBadgeById[m.idHomeTeam];
-      const awayBadge = state.teamBadgeById[m.idAwayTeam];
-
+      const league = m.strLeague || leagueName(leagueKey);
       const scoreStr = m.intHomeScore != null
         ? `${m.intHomeScore} – ${m.intAwayScore}`
         : "– : –";
 
+      const leagueTeams = state.leagues[leagueKey].teams;
+      const homeBadge = leagueTeams.find(t => t.idTeam === m.idHomeTeam)?.strTeamBadge;
+      const awayBadge = leagueTeams.find(t => t.idTeam === m.idAwayTeam)?.strTeamBadge;
+
       return `
         <article class="match-card" data-match-id="${m.idEvent || ""}">
           <div class="match-league">
-            <span>${m.strLeague || "Liga Paraguaya"}</span>
+            <span>${league}</span>
             <span>${m.dateEventLocal || m.dateEvent || ""} · ${formatHour(m.strTimeLocal || m.strTime)}</span>
           </div>
           <div class="match-main-row">
@@ -968,60 +839,108 @@
               <span class="match-team-meta">Visitante</span>
             </div>
           </div>
-          <div class="match-footer">
+          <div class="match-league">
             <span>${m.strVenue || ""}</span>
-            <span>${m.strTVStation || ""}</span>
+            <span>${leagueName(leagueKey)}</span>
           </div>
         </article>
       `;
     }
 
-    function renderResultsCards(list) {
-      return list.slice(0, 6).map(m => `
-        <article class="result-card">
-          <div class="result-top">
-            <span>${m.strLeague}</span>
-            <span>${m.dateEventLocal || m.dateEvent || ""}</span>
+    function renderHero() {
+      const liga = state.leagues[state.activeLeagueMatches];
+      const all = [...liga.next, ...liga.past];
+      if (!all.length) return "";
+      let heroMatch =
+        all.find(m => liveStatus(m) === "live") ||
+        liga.next[0] ||
+        liga.past[0];
+      const status = liveStatus(heroMatch);
+      const leagueLabel = leagueName(state.activeLeagueMatches);
+      let label = leagueLabel;
+      if (status === "live") label += " · En vivo";
+      else if (status === "finished") label += " · Último";
+      else label += " · Próximo";
+
+      const hTeam = heroMatch.strHomeTeam;
+      const aTeam = heroMatch.strAwayTeam;
+      const meta = [
+        heroMatch.dateEventLocal || heroMatch.dateEvent || "",
+        heroMatch.strVenue || ""
+      ].filter(Boolean).join(" · ");
+      const scoreStr = heroMatch.intHomeScore != null
+        ? `${heroMatch.intHomeScore} – ${heroMatch.intAwayScore}`
+        : "– : –";
+
+      return `
+        <section class="section">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Partido destacado</div>
+              <div class="section-subtitle">${leagueLabel}</div>
+            </div>
+            <button class="section-link" data-route="partidos">Ver agenda completa</button>
           </div>
-          <div class="result-teams">
-            <span>${m.strHomeTeam}</span>
-            <span class="result-score">${m.intHomeScore} – ${m.intAwayScore}</span>
-            <span>${m.strAwayTeam}</span>
-          </div>
-          <div class="result-top">
-            <span>${m.strVenue || ""}</span>
-            <span>Detalles</span>
-          </div>
-        </article>
-      `).join("");
+          <article class="hero-card">
+            <div class="hero-image">
+              <div class="hero-label">
+                ${label}
+                ${status === "live" ? '<span class="live-pill">LIVE</span>' : ""}
+              </div>
+              <div class="hero-score">
+                <div class="hero-team">
+                  <div class="hero-team-name">${hTeam}</div>
+                  <div class="hero-team-meta">Local</div>
+                </div>
+                <div class="hero-score-number">${scoreStr}</div>
+                <div class="hero-team" style="text-align:right">
+                  <div class="hero-team-name">${aTeam}</div>
+                  <div class="hero-team-meta">Visitante</div>
+                </div>
+              </div>
+            </div>
+            <div class="hero-body">
+              <div class="hero-chip-row">
+                <span class="chip">${leagueLabel}</span>
+                <span class="chip">${status === "live" ? "Actualizado en vivo" : "Próximo / reciente"}</span>
+                <span class="chip">${heroMatch.strVenue || "Estadio por confirmar"}</span>
+              </div>
+              <h1 class="hero-title">${hTeam} vs ${aTeam}</h1>
+              <p class="hero-meta">${meta}</p>
+              <div class="hero-cta-row">
+                <button class="btn-primary" data-route="partidos">
+                  Ver todos los partidos
+                </button>
+                <button class="btn-soft" data-route="tabla">
+                  Ver tabla de ${leagueLabel}
+                </button>
+              </div>
+            </div>
+          </article>
+        </section>
+      `;
     }
 
-    function renderTableStrip() {
-      if (!state.table.length) return "";
-
-      const chips = state.table.map(t => `
+    function renderTableStrip(key) {
+      const rows = state.leagues[key].table;
+      if (!rows.length) return "";
+      const chips = rows.map(t => `
         <article class="team-chip">
           <div class="team-chip-header">
             <span class="team-chip-pos">${t.intRank}</span>
             <span class="team-chip-name">${t.strTeam}</span>
           </div>
           <span class="team-chip-points">${t.intPoints} pts</span>
-          <div class="team-chip-form">
-            <span class="form-dot ${t.strForm?.includes("W") ? "win" : "loss"}"></span>
-            <span class="form-dot ${t.strForm?.includes("D") ? "draw" : "loss"}"></span>
-            <span class="form-dot loss"></span>
-          </div>
         </article>
       `).join("");
-
       return `
         <section class="section">
           <div class="section-header">
             <div>
-              <div class="section-title">Tabla de posiciones</div>
-              <div class="section-subtitle">Primera División · ${SEASON}</div>
+              <div class="section-title">Tabla rápida · ${leagueName(key)}</div>
+              <div class="section-subtitle">${SEASONS[key]}</div>
             </div>
-            <button class="section-link" data-route="tabla">Ver tabla completa</button>
+            <button class="section-link" data-route="tabla">Ver tablas completas</button>
           </div>
           <div class="standings-strip">
             ${chips}
@@ -1030,48 +949,40 @@
       `;
     }
 
-    function renderNewsSection() {
-      if (!state.news.length) {
-        return `
-          <section class="section">
-            <div class="section-header">
-              <div>
-                <div class="section-title">Noticias destacadas</div>
-                <div class="section-subtitle">
-                  Conectá una API de noticias para ver titulares reales.
-                </div>
-              </div>
+    function renderNewsPreview(limit = 4) {
+      if (!state.news.length) return `
+        <section class="section">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Noticias paraguayas</div>
+              <div class="section-subtitle">Conectá tu API de noticias para ver titulares reales.</div>
             </div>
-            <p class="hint">
-              Editá <code>NEWS_API_KEY</code> en el script para usar NewsData.io, NewsAPI.org u otra
-              fuente y mostrar noticias deportivas de Paraguay.
-            </p>
-          </section>
-        `;
-      }
-
-      const cards = state.news.slice(0, 6).map(n => `
+          </div>
+          <p class="hint">
+            Editá <code>NEWS_API_KEY</code> en el script para usar NewsData.io u otra API y traer noticias deportivas de Paraguay.
+          </p>
+        </section>
+      `;
+      const cards = state.news.slice(0, limit).map(n => `
         <article class="news-card">
           <div class="news-thumb" style="${n.image_url ? `background-image:url('${n.image_url}');background-size:cover;background-position:center;` : ""}"></div>
           <div class="news-body">
             <div class="news-tag">Noticias</div>
-            <div class="news-title">${n.title || "Titular"}</div>
+            <div class="news-title">${n.title || ""}</div>
             <div class="news-meta">
               ${(n.source_id || n.source || "").toUpperCase()} · ${n.pubDate || n.published_at || ""}
             </div>
           </div>
         </article>
       `).join("");
-
       return `
         <section class="section">
           <div class="section-header">
             <div>
-              <div class="section-title">Noticias reales</div>
-              <div class="section-subtitle">
-                Últimos titulares deportivos desde medios paraguayos.
-              </div>
+              <div class="section-title">Noticias de Paraguay</div>
+              <div class="section-subtitle">Medios locales y jugadores paraguayos en el exterior.</div>
             </div>
+            <button class="section-link" data-route="noticias">Ver todas</button>
           </div>
           <div class="news-grid">
             ${cards}
@@ -1080,253 +991,339 @@
       `;
     }
 
-    // =============== VISTAS / RUTAS =================
-
+    // ========= VISTAS =========
     function viewHome() {
-      const liveOrSoon = state.nextMatches.slice(0, 6);
-      const last = state.pastMatches.slice(0, 6);
+      const liga = state.leagues[state.activeLeagueMatches];
+      const next = liga.next.slice(0, 6);
+      const past = liga.past.slice(0, 6);
+      const seleNext = state.sele.next.slice(0, 3);
+      const selePast = state.sele.past.slice(0, 3);
 
       appEl.innerHTML = `
         ${renderHero()}
         <section class="section">
           <div class="section-header">
             <div>
-              <div class="section-title">Partidos de hoy y próximos</div>
-              <div class="section-subtitle">Agenda cercana de la liga paraguaya.</div>
+              <div class="section-title">Partidos de ${leagueName(state.activeLeagueMatches)}</div>
+              <div class="section-subtitle">Próximos y recientes.</div>
             </div>
-            <button class="section-link" data-route="partidos">Ver todos los partidos</button>
+          </div>
+          <div class="filter-row">
+            <button class="filter-pill ${state.activeLeagueMatches === "primera" ? "active" : ""}" data-league-filter="primera">Primera</button>
+            <button class="filter-pill ${state.activeLeagueMatches === "intermedia" ? "active" : ""}" data-league-filter="intermedia">Intermedia</button>
+            <button class="filter-pill ${state.activeLeagueMatches === "copa" ? "active" : ""}" data-league-filter="copa">Copa PY</button>
           </div>
           <div class="matches-list">
-            ${liveOrSoon.map(renderMatchCard).join("")}
+            ${next.map(m => renderMatchCard(m, state.activeLeagueMatches)).join("")}
           </div>
         </section>
         <section class="section">
           <div class="section-header">
             <div>
               <div class="section-title">Últimos resultados</div>
-              <div class="section-subtitle">Lo último del fútbol paraguayo.</div>
+              <div class="section-subtitle">${leagueName(state.activeLeagueMatches)} · últimos 6.</div>
             </div>
-            <button class="section-link" data-route="partidos">Ver más resultados</button>
           </div>
-          <div class="results-list">
-            ${renderResultsCards(last)}
+          <div class="matches-list">
+            ${past.map(m => renderMatchCard(m, state.activeLeagueMatches)).join("")}
           </div>
         </section>
-        ${renderTableStrip()}
-        ${renderNewsSection()}
+        ${renderTableStrip("primera")}
+        <section class="section">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Selección paraguaya</div>
+              <div class="section-subtitle">Amistosos y eliminatorias.</div>
+            </div>
+          </div>
+          <div class="matches-list">
+            ${seleNext.map(m => renderMatchCard(m, "primera")).join("")}
+            ${selePast.map(m => renderMatchCard(m, "primera")).join("")}
+          </div>
+        </section>
+        ${renderNewsPreview(4)}
       `;
+
+      attachFilters();
+      attachInternalLinks();
     }
 
     function viewPartidos() {
-      const all = [...state.nextMatches, ...state.pastMatches];
-      // ordenar por fecha y hora
-      all.sort((a, b) => {
-        const da = (a.dateEventLocal || a.dateEvent || "") + (a.strTimeLocal || a.strTime || "");
-        const db = (b.dateEventLocal || b.dateEvent || "") + (b.strTimeLocal || b.strTime || "");
-        return da.localeCompare(db);
-      });
+      const leagueKey = state.activeLeagueMatches;
+      const blocks = ["primera","intermedia","copa"].map(key => {
+        const liga = state.leagues[key];
+        const all = [...liga.next, ...liga.past];
+        all.sort((a,b) => {
+          const da = (a.dateEventLocal || a.dateEvent || "") + (a.strTimeLocal || a.strTime || "");
+          const db = (b.dateEventLocal || b.dateEvent || "") + (b.strTimeLocal || b.strTime || "");
+          return da.localeCompare(db);
+        });
+        return `
+          <section class="section">
+            <div class="section-header">
+              <div>
+                <div class="section-title">${leagueName(key)}</div>
+                <div class="section-subtitle">Próximos y recientes.</div>
+              </div>
+            </div>
+            <div class="matches-list">
+              ${all.map(m => renderMatchCard(m, key)).join("")}
+            </div>
+          </section>
+        `;
+      }).join("");
+
+      const seleSection = `
+        <section class="section">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Selección paraguaya</div>
+              <div class="section-subtitle">Amistosos y oficiales.</div>
+            </div>
+          </div>
+          <div class="matches-list">
+            ${state.sele.next.map(m => renderMatchCard(m,"primera")).join("")}
+            ${state.sele.past.map(m => renderMatchCard(m,"primera")).join("")}
+          </div>
+        </section>
+      `;
 
       appEl.innerHTML = `
         <section class="section">
           <div class="section-header">
             <div>
               <div class="section-title">Todos los partidos</div>
-              <div class="section-subtitle">
-                Próximos, en juego y recientes. Actualiza cada 30 segundos.
-              </div>
+              <div class="section-subtitle">Primera, Intermedia, Copa PY y Albirroja.</div>
             </div>
           </div>
-          <div class="matches-list">
-            ${all.map(renderMatchCard).join("")}
-          </div>
-          <p class="hint">
-            Tip: podés usar estos datos para generar contenido automatizado en redes (previas, resultados, estadísticas).
-          </p>
         </section>
+        ${blocks}
+        ${seleSection}
       `;
+
+      attachInternalLinks();
     }
 
     function viewTabla() {
-      const rows = state.table;
+      const leagueKey = state.activeLeagueTable;
+      function tableHTML(key) {
+        const rows = state.leagues[key].table;
+        if (!rows.length) return "<p class='hint'>Sin datos aún para esta competición.</p>";
+        return `
+          <div class="team-detail-card">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Equipo</th>
+                  <th>PJ</th>
+                  <th>G</th>
+                  <th>E</th>
+                  <th>P</th>
+                  <th>GF</th>
+                  <th>GC</th>
+                  <th>DG</th>
+                  <th>Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${rows.map(t => `
+                  <tr>
+                    <td>${t.intRank}</td>
+                    <td>${t.strTeam}</td>
+                    <td>${t.intPlayed}</td>
+                    <td>${t.intWin}</td>
+                    <td>${t.intDraw}</td>
+                    <td>${t.intLoss}</td>
+                    <td>${t.intGoalsFor}</td>
+                    <td>${t.intGoalsAgainst}</td>
+                    <td>${t.intGoalDifference}</td>
+                    <td>${t.intPoints}</td>
+                  </tr>
+                `).join("")}
+              </tbody>
+            </table>
+          </div>
+        `;
+      }
 
       appEl.innerHTML = `
         <section class="section">
           <div class="section-header">
             <div>
-              <div class="section-title">Tabla completa</div>
-              <div class="section-subtitle">Primera División · ${SEASON}</div>
+              <div class="section-title">Tablas de posiciones</div>
+              <div class="section-subtitle">Temporadas actuales en Paraguay.</div>
             </div>
           </div>
-          <section class="section">
-            <div class="standings-strip">
-              ${rows.map(t => `
-                <article class="team-chip">
-                  <div class="team-chip-header">
-                    <span class="team-chip-pos">${t.intRank}</span>
-                    <span class="team-chip-name">${t.strTeam}</span>
-                  </div>
-                  <span class="team-chip-points">${t.intPoints} pts</span>
-                  <div class="team-chip-form">
-                    <span class="form-dot ${t.strForm?.includes("W") ? "win" : "loss"}"></span>
-                    <span class="form-dot ${t.strForm?.includes("D") ? "draw" : "loss"}"></span>
-                    <span class="form-dot loss"></span>
-                  </div>
-                </article>
-              `).join("")}
-            </div>
-          </section>
-          <section class="section">
-            <div class="team-detail-card">
-              <table>
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Equipo</th>
-                    <th>PJ</th>
-                    <th>G</th>
-                    <th>E</th>
-                    <th>P</th>
-                    <th>GF</th>
-                    <th>GC</th>
-                    <th>DG</th>
-                    <th>Pts</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${rows.map(t => `
-                    <tr>
-                      <td>${t.intRank}</td>
-                      <td>${t.strTeam}</td>
-                      <td>${t.intPlayed}</td>
-                      <td>${t.intWin}</td>
-                      <td>${t.intDraw}</td>
-                      <td>${t.intLoss}</td>
-                      <td>${t.intGoalsFor}</td>
-                      <td>${t.intGoalsAgainst}</td>
-                      <td>${t.intGoalDifference}</td>
-                      <td>${t.intPoints}</td>
-                    </tr>
-                  `).join("")}
-                </tbody>
-              </table>
-            </div>
-            <p class="hint">
-              Datos provistos por TheSportsDB (free tier). Podés sumarle tus propios cálculos (promedios, forma, etc.) con tu backend o n8n.
-            </p>
-          </section>
+          <div class="filter-row">
+            <button class="filter-pill ${leagueKey === "primera" ? "active" : ""}" data-table-filter="primera">Primera</button>
+            <button class="filter-pill ${leagueKey === "intermedia" ? "active" : ""}" data-table-filter="intermedia">Intermedia</button>
+            <button class="filter-pill ${leagueKey === "copa" ? "active" : ""}" data-table-filter="copa">Copa PY</button>
+          </div>
+        </section>
+        <section class="section">
+          ${tableHTML(leagueKey)}
+          <p class="hint">Datos provistos por TheSportsDB. Podés combinarlos con tu propio backend para métricas avanzadas.</p>
         </section>
       `;
+
+      attachFilters();
+      attachInternalLinks();
     }
 
     function viewEquipos() {
-      const cards = state.teams.map(t => `
-        <article class="team-card" data-route="equipo" data-team-id="${t.idTeam}">
-          <div class="team-card-header">
-            <img src="${t.strTeamBadge}" alt="${t.strTeam}" class="badge-lg" />
-            <div>
-              <div class="team-name">${t.strTeam}</div>
-              <div class="section-subtitle">${t.strStadium || ""}</div>
-            </div>
-          </div>
-          <div class="team-card-body">
-            <span>Fundado: ${t.intFormedYear || "—"}</span>
-            <span>Ciudad: ${t.strStadiumLocation || "—"}</span>
-            <span>Sport: ${t.strSport}</span>
-          </div>
-        </article>
-      `).join("");
-
+      const allTeams = ["primera","intermedia","copa"].flatMap(key =>
+        state.leagues[key].teams.map(t => ({...t, _league: key}))
+      );
       appEl.innerHTML = `
         <section class="section">
           <div class="section-header">
             <div>
-              <div class="section-title">Equipos</div>
-              <div class="section-subtitle">
-                Todos los clubes de la Primera División Paraguaya.
-              </div>
+              <div class="section-title">Equipos paraguayos</div>
+              <div class="section-subtitle">Primera, Intermedia y Copa Paraguay.</div>
             </div>
           </div>
           <div class="teams-grid">
-            ${cards}
+            ${allTeams.map(t => `
+              <article class="team-card" data-route="equipo" data-team-id="${t.idTeam}" data-team-league="${t._league}">
+                <div class="team-card-header">
+                  ${t.strTeamBadge ? `<img src="${t.strTeamBadge}" alt="${t.strTeam}" class="badge-lg" />` : ""}
+                  <div>
+                    <div class="team-name">${t.strTeam}</div>
+                    <div class="section-subtitle">${leagueName(t._league)}</div>
+                  </div>
+                </div>
+                <div class="team-card-body">
+                  <span>Fundado: ${t.intFormedYear || "—"}</span>
+                  <span>Estadio: ${t.strStadium || "—"}</span>
+                  <span>Ciudad: ${t.strStadiumLocation || "—"}</span>
+                </div>
+              </article>
+            `).join("")}
           </div>
         </section>
       `;
+      attachInternalLinks();
     }
 
-    function viewEquipo(idTeam) {
-      const t = state.teamById[idTeam];
-      if (!t) {
-        appEl.innerHTML = `
+    function viewEquipo(teamId) {
+      let team = null;
+      let leagueKey = null;
+      for (const key of ["primera","intermedia","copa"]) {
+        const found = state.leagues[key].teams.find(t => t.idTeam === teamId);
+        if (found) {
+          team = found;
+          leagueKey = key;
+          break;
+        }
+      }
+      if (!team) {
+        appEl.innerHTML = \`
           <section class="section">
             <div class="section-header">
               <div>
                 <div class="section-title">Equipo no encontrado</div>
-                <div class="section-subtitle">Revisá el ID o volvé a la lista.</div>
+                <div class="section-subtitle">Probá volviendo al listado de equipos.</div>
               </div>
+              <button class="section-link" data-route="equipos">← Volver</button>
             </div>
-            <button class="btn-soft" data-route="equipos">Volver a equipos</button>
           </section>
-        `;
+        \`;
+        attachInternalLinks();
         return;
       }
 
-      const badge = t.strTeamBadge;
-      const desc = (t.strDescriptionES || t.strDescriptionEN || "")
-        .split(". ")
-        .slice(0, 3)
-        .join(". ") || "Descripción no disponible todavía.";
+      const matches = ["primera","intermedia","copa"].flatMap(key => {
+        const liga = state.leagues[key];
+        return [...liga.next, ...liga.past].filter(
+          m => m.idHomeTeam === teamId || m.idAwayTeam === teamId
+        ).map(m => ({...m, _league: key}));
+      }).slice(0, 8);
 
-      // últimos partidos del equipo
-      const allMatches = [...state.nextMatches, ...state.pastMatches];
-      const related = allMatches.filter(m => m.idHomeTeam === idTeam || m.idAwayTeam === idTeam).slice(0, 6);
-
-      appEl.innerHTML = `
+      appEl.innerHTML = \`
         <section class="section">
           <div class="section-header">
             <div>
-              <div class="section-title">${t.strTeam}</div>
-              <div class="section-subtitle">${t.strLeague || ""}</div>
+              <div class="section-title">\${team.strTeam}</div>
+              <div class="section-subtitle">\${leagueName(leagueKey)}</div>
             </div>
             <button class="section-link" data-route="equipos">← Volver a equipos</button>
           </div>
-
-          <div class="team-detail">
+          <div class="team-detail-layout">
             <div class="team-detail-card">
               <div style="display:flex;align-items:center;gap:14px;">
-                <img src="${badge}" alt="${t.strTeam}" class="badge-lg" />
+                \${team.strTeamBadge ? \`<img src="\${team.strTeamBadge}" alt="\${team.strTeam}" class="badge-lg" />\` : ""}
                 <div>
-                  <div class="team-name">${t.strTeam}</div>
-                  <div class="section-subtitle">
-                    Fundado: ${t.intFormedYear || "—"} · ${t.strStadium || ""}
-                  </div>
-                  <div class="section-subtitle">
-                    Ciudad: ${t.strStadiumLocation || "—"}
-                  </div>
+                  <div class="team-name">\${team.strTeam}</div>
+                  <div class="section-subtitle">Fundado: \${team.intFormedYear || "—"}</div>
+                  <div class="section-subtitle">Estadio: \${team.strStadium || "—"}</div>
+                  <div class="section-subtitle">Ciudad: \${team.strStadiumLocation || "—"}</div>
                 </div>
               </div>
               <p style="font-size:13px;color:var(--text-muted);margin-top:6px;">
-                ${desc}
+                \${(team.strDescriptionES || team.strDescriptionEN || "Sin descripción detallada todavía.").split(". ").slice(0,3).join(". ")}
               </p>
             </div>
-
             <div class="team-detail-card">
               <div class="section-header">
                 <div>
-                  <div class="section-title" style="font-size:15px;">Partidos recientes</div>
-                  <div class="section-subtitle">Hasta 6 partidos vinculados a ${t.strTeam}.</div>
+                  <div class="section-title" style="font-size:15px;">Partidos relacionados</div>
+                  <div class="section-subtitle">Últimos y próximos encuentros.</div>
                 </div>
               </div>
               <div class="matches-list">
-                ${related.length ? related.map(renderMatchCard).join("") : "<p class='hint'>Todavía no hay partidos vinculados en la ventana actual.</p>"}
+                \${matches.length ? matches.map(m => renderMatchCard(m, m._league)).join("") : "<p class='hint'>Sin partidos vinculados en la ventana actual.</p>"}
               </div>
             </div>
           </div>
         </section>
-      `;
+      \`;
+      attachInternalLinks();
     }
 
-    // =============== ROUTER ====================
+    function viewNoticias() {
+      if (!state.news.length) {
+        appEl.innerHTML = \`
+          <section class="section">
+            <div class="section-header">
+              <div>
+                <div class="section-title">Noticias paraguayas</div>
+                <div class="section-subtitle">Conectá tu API para ver titulares reales.</div>
+              </div>
+            </div>
+            <p class="hint">Editá <code>NEWS_API_KEY</code> en el script para mostrar noticias deportivas.</p>
+          </section>
+        \`;
+        return;
+      }
+      const cards = state.news.map(n => \`
+        <article class="news-card">
+          <div class="news-thumb" style="\${n.image_url ? \`background-image:url('\${n.image_url}');background-size:cover;background-position:center;\` : ""}"></div>
+          <div class="news-body">
+            <div class="news-tag">Noticias</div>
+            <div class="news-title">\${n.title || ""}</div>
+            <div class="news-meta">
+              \${(n.source_id || n.source || "").toUpperCase()} · \${n.pubDate || n.published_at || ""}
+            </div>
+          </div>
+        </article>
+      \`).join("");
+      appEl.innerHTML = \`
+        <section class="section">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Noticias deportivas</div>
+              <div class="section-subtitle">Medios de Paraguay y paraguayos en el exterior.</div>
+            </div>
+          </div>
+          <div class="news-grid">
+            \${cards}
+          </div>
+        </section>
+      \`;
+    }
 
+    // ========= ROUTER =========
     function setActiveNav(route) {
       document.querySelectorAll(".nav-pill").forEach(btn => {
         btn.classList.toggle("active", btn.dataset.route === route);
@@ -1334,9 +1331,11 @@
     }
 
     function navigate(hash) {
-      const [route, param] = hash.replace("#", "").split("/").filter(Boolean);
+      const parts = hash.replace("#","").split("/").filter(Boolean);
+      const route = parts[0] || "home";
+      const param = parts[1];
 
-      if (!route || route === "home") {
+      if (route === "home") {
         setActiveNav("home");
         viewHome();
       } else if (route === "partidos") {
@@ -1351,34 +1350,50 @@
       } else if (route === "equipo" && param) {
         setActiveNav("equipos");
         viewEquipo(param);
+      } else if (route === "noticias") {
+        setActiveNav("noticias");
+        viewNoticias();
       } else {
         setActiveNav("home");
         viewHome();
       }
-
       attachInternalLinks();
     }
 
     function attachInternalLinks() {
-      // nav pills botón
       document.querySelectorAll("[data-route]").forEach(el => {
-        el.onclick = (e) => {
+        el.onclick = () => {
           const r = el.dataset.route;
           const teamId = el.dataset.teamId;
-          if (!r) return;
           if (r === "equipo" && teamId) {
-            location.hash = `#/equipo/${teamId}`;
+            location.hash = "#/equipo/" + teamId;
+          } else if (r === "home") {
+            location.hash = "#/";
           } else {
-            location.hash = r === "home" ? "#/" : `#/${r}`;
+            location.hash = "#/" + r;
           }
+        };
+      });
+    }
+
+    function attachFilters() {
+      document.querySelectorAll("[data-league-filter]").forEach(btn => {
+        btn.onclick = () => {
+          state.activeLeagueMatches = btn.dataset.leagueFilter;
+          navigate(location.hash || "#/");
+        };
+      });
+      document.querySelectorAll("[data-table-filter]").forEach(btn => {
+        btn.onclick = () => {
+          state.activeLeagueTable = btn.dataset.tableFilter;
+          navigate("#/tabla");
         };
       });
     }
 
     window.addEventListener("hashchange", () => navigate(location.hash));
 
-    // =============== THEME =====================
-
+    // ========= TEMA =========
     const themeToggleBtn = document.getElementById("themeToggle");
     const themeIcon = document.getElementById("themeIcon");
 
@@ -1391,43 +1406,29 @@
         themeIcon.textContent = "☾";
       }
     }
-
     function initTheme() {
       const stored = localStorage.getItem("dp-theme");
       if (stored) {
         applyTheme(stored);
       } else {
-        const prefersDark = window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
         applyTheme(prefersDark ? "dark" : "light");
       }
     }
-
     themeToggleBtn.addEventListener("click", () => {
       const isDark = document.documentElement.classList.contains("dark-theme");
-      const newTheme = isDark ? "light" : "dark";
-      applyTheme(newTheme);
-      localStorage.setItem("dp-theme", newTheme);
+      const next = isDark ? "light" : "dark";
+      applyTheme(next);
+      localStorage.setItem("dp-theme", next);
     });
 
-    // =============== LIVE REFRESH ==================
-
-    async function refreshDataAndView() {
-      try {
-        await loadData();
-        navigate(location.hash || "#/");
-      } catch (e) {
-        console.error("Error refrescando datos:", e);
-      }
-    }
-
-    // =============== INIT =========================
-
+    // ========= INIT =========
     (async function init() {
       initTheme();
-      await refreshDataAndView();
-      // "live": refrescar cada 30s
-      setInterval(refreshDataAndView, 30000);
+      await loadAllData();
+      navigate(location.hash || "#/");
+      // refresco suave cada 60s
+      setInterval(loadAllData, 60000);
     })();
   </script>
 </body>
