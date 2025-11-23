@@ -644,8 +644,21 @@
 
   <script>
     // ========= CONFIG =========
-    const WORKER_BASE = "https://broad-feather-e731.nanotobp.workers.dev/?url=";
-    const TSDB_BASE = WORKER_BASE + "https://www.thesportsdb.com/api/v1/json/3/";
+    // 🔥 OPCIÓN 1: USA TU PROPIO WORKER (RECOMENDADO)
+    // Reemplaza la URL de abajo con la de TU worker de Cloudflare
+    // Ejemplo: "https://futbol-paraguay.tu-usuario.workers.dev/api/thesportsdb/"
+    // Lee INSTRUCCIONES.md para crear tu worker en 5 minutos
+    
+    const WORKER_BASE = "TU_WORKER_AQUI"; // ← Reemplaza esto
+    
+    // 🔥 OPCIÓN 2: USA EL PROXY GENÉRICO (puede fallar o ser lento)
+    // Si no quieres crear tu worker, descomenta la línea de abajo:
+    // const WORKER_BASE = "https://broad-feather-e731.nanotobp.workers.dev/?url=";
+    
+    const TSDB_BASE = WORKER_BASE.includes("workers.dev/api") 
+      ? WORKER_BASE  // Si usas tu worker propio
+      : WORKER_BASE + "https://www.thesportsdb.com/api/v1/json/3/"; // Si usas proxy genérico
+      
     const LEAGUES = {
       primera: 4687,     // Paraguayan Primera Division
       intermedia: 4900,  // División Intermedia
