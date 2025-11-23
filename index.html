@@ -649,7 +649,7 @@
     // Ejemplo: "https://futbol-paraguay.tu-usuario.workers.dev/api/thesportsdb/"
     // Lee INSTRUCCIONES.md para crear tu worker en 5 minutos
     
-    const WORKER_BASE = "hidden-math-f95a.nanotobp.workers.dev"; // ← Reemplaza esto
+    const WORKER_BASE = "https://hidden-math-f95a.nanotobp.workers.dev/"; // ← Reemplaza esto
     
     // 🔥 OPCIÓN 2: USA EL PROXY GENÉRICO (puede fallar o ser lento)
     // Si no quieres crear tu worker, descomenta la línea de abajo:
@@ -673,7 +673,7 @@
     // Noticias (debes poner tu API key si querés datos reales)
     const NEWS_API_KEY = "pub_3510dae7e9334a688118abec770a8aa4"; // p.ej. NewsData.io
     const NEWS_URL = NEWS_API_KEY
-      ? WORKER_BASE + `https://newsdata.io/api/1/news?apikey=${pub_3510dae7e9334a688118abec770a8aa4}&country=py&language=es&category=sports`
+      ? WORKER_BASE + `https://newsdata.io/api/1/news?apikey=${NEWS_API_KEY}&country=py&language=es&category=sports`
       : null;
 
     const state = {
